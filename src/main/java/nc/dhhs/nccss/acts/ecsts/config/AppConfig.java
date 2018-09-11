@@ -21,38 +21,38 @@ import org.springframework.ws.client.core.WebServiceTemplate;
 @ComponentScan(basePackages = "nc.dhhs.nccss.acts.ecsts")
 public class AppConfig implements WebMvcConfigurer    {
 
-@Bean
-public InternalResourceViewResolver viewResolver(){
-	InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
-	internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
-	internalResourceViewResolver.setSuffix(".jsp");
-	return internalResourceViewResolver;
-		
-	}
- 
- 
-@Bean 
-     Jaxb2Marshaller jaxb2Marshaller() { 
-	
-      Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller(); 
-      jaxb2Marshaller.setContextPath("gov.nc.ncidng.ncidngwebservice.schemas"); 
-      return jaxb2Marshaller; 
-    } 
+	@Bean
+	public InternalResourceViewResolver viewResolver(){
+		InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+		internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
+		internalResourceViewResolver.setSuffix(".jsp");
+		return internalResourceViewResolver;
 
-@Bean
-public WebServiceTemplate webServiceTemplate() {
-	WebServiceTemplate template = new WebServiceTemplate();
-	//template.setDefaultUri("https://idpdncid.nc.gov/ncidwebservice/ncidws.wsdl"); 
-	//template.setDefaultUri("https://idpdncid.nc.gov/ncidwebservice/ncidws-prod.wsdl");
-	template.setMarshaller(jaxb2Marshaller());
-	template.setUnmarshaller(jaxb2Marshaller());
-	return template;
-	
-}
- @Override
-  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-	registry.addResourceHandler("/resources/css/**").addResourceLocations("/resources/css/");
-	registry.addResourceHandler("/resources/images/**").addResourceLocations("/resources/images/");
-} 
+	}
+
+
+	@Bean 
+	Jaxb2Marshaller jaxb2Marshaller() { 
+
+		Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller(); 
+		jaxb2Marshaller.setContextPath("gov.nc.ncidng.ncidngwebservice.schemas"); 
+		return jaxb2Marshaller; 
+	} 
+
+	@Bean
+	public WebServiceTemplate webServiceTemplate() {
+		WebServiceTemplate template = new WebServiceTemplate();
+		//template.setDefaultUri("https://idpdncid.nc.gov/ncidwebservice/ncidws.wsdl"); 
+		//template.setDefaultUri("https://idpdncid.nc.gov/ncidwebservice/ncidws-prod.wsdl");
+		template.setMarshaller(jaxb2Marshaller());
+		template.setUnmarshaller(jaxb2Marshaller());
+		return template;
+
+	}
+
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		registry.addResourceHandler("/resources/css/**").addResourceLocations("/resources/css/");
+		registry.addResourceHandler("/resources/images/**").addResourceLocations("/resources/images/");
+	} 
 }

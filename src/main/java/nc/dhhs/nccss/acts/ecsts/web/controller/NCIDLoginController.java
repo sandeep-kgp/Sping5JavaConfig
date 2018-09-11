@@ -34,7 +34,7 @@ public class NCIDLoginController {
 		}
 		
 		*/
-		return "Output";
+		return "Login";
 	}
 	
 	/*@RequestMapping(value = "/loginsubmit")
