@@ -10,7 +10,7 @@
 </head>
 <body>
 <form id="form1"  action="loginsubmit" method="post">
-<img class="style1" id="Image1" style="width: 730px;" src="Images/Banner.jpg">
+<img class="style1" id="Image1" style="width: 730px;" src="resources/images/Banner.jpg">
 <div class="main">
             
     <br>
